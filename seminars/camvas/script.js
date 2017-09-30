@@ -1,0 +1,4 @@
+var canvas = document.getElementById("sandbox");
+var context = canvas.getContext("2d");
+
+context.fillRect(50, 25, 200, 250);
