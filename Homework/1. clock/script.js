@@ -1,6 +1,8 @@
 var canvas = document.getElementById("clock");
 var context = canvas.getContext("2d");
 
+function clock(){
+
 circle = new Path2D;
 circle.arc(120, 80, 60, 0, 2 * Math.PI);
 
@@ -32,6 +34,7 @@ for(d = 0; d < 60; ++d){
     line.lineTo(qX + x, qY+ y);
 
     context.lineWidth = 1;
+    context.strokeStyle = "black";
     context.stroke(line);
 
 }
@@ -65,12 +68,6 @@ lY = 0.9 * mY,
 kX = 0.9 * hX,
 kY = 0.9 * hY;
 
-// sX += R;
-// sY += R;
-// mX += R;
-// mY += R;
-// hX += R;
-// hY += R;
 zX += R;
 zY += R;
 lX += R;
@@ -85,6 +82,7 @@ hLine = new Path2D();
 hLine.moveTo(x + R, y + R);
 hLine.lineTo(kX + x - 3, kY + y - 3);
 context.lineWidth = 5;
+context.strokeStyle = "black";
 context.stroke(hLine);
 
 mLine = new Path2D();
@@ -92,6 +90,7 @@ mLine = new Path2D();
 mLine.moveTo(x + R, y + R);
 mLine.lineTo(lX + x + 3, lY + y + 3);
 context.lineWidth = 1;
+context.strokeStyle = "black";
 context.stroke(mLine);
 
 sLine = new Path2D();
@@ -101,12 +100,14 @@ sLine.lineTo(zX + x - 5, zY + y - 5);
 context.lineWidth = 1;
 context.strokeStyle = "red";
 context.stroke(sLine);
+}
 
 function drawWatch(){
     context.clearRect(0, 0, 1000, 1000);
 
-
+    clock();
     
     setTimeout(drawWatch, 1000);
 }
 
+drawWatch();
