@@ -1,17 +1,17 @@
-var canvas = document.getElementById("clock");
-var context = canvas.getContext("2d");
+var canvas = document.getElementById("clock"),
+    context = canvas.getContext("2d");
+
+function drawCrl(x, y, R, col){
+    circle = new Path2D;
+    circle.arc(x, y, R, 0, 2 * Math.PI);
+    context.fillStyle = col;
+    context.fill(circle);
+}
 
 function clock(){
 
-    circle = new Path2D;
-        circle.arc(120, 80, 60, 0, 2 * Math.PI);
-        context.fillStyle = "black";
-        context.fill(circle);
-
-    circle2 = new Path2D;
-        circle2.arc(120, 80, 59, 0, 2 * Math.PI);
-        context.fillStyle = "white";
-        context.fill(circle2);
+    drawCrl(120, 80, 60, "Black");
+    drawCrl(120, 80, 59, "White");
 
     var d, angle, pX, pY, qX, qY, R = 60, x = 60, y = 20;
 
@@ -39,22 +39,18 @@ function clock(){
 
     }
 
-    context.strokeStyle = "blue";    
-    context.strokeText("3", 165, 83);
-    context.strokeText("12", 115, 35);
-    context.strokeText("6", 117, 130);
-    context.strokeText("9", 70, 83);
+    context.fillStyle = "blue";  
+    context.font = 'bold 12px Arial';  
+    context.fillText("3", 165, 83); 
+    context.fillText("12", 115, 36);
+    context.fillText("6", 117, 131);
+    context.fillText("9", 70, 83);
+  
+    var date = new Date();
 
-    var date = new Date(),
-
-    h = date.getHours(),
-    m = date.getMinutes(),
-    s = date.getSeconds(),
-    ms = date.getMilliseconds() / 1000,
-
-    sAngel = Math.PI / 2 - ((s + ms) / 60) * (2 * Math.PI),
-    mAngel = Math.PI / 2 - ((m + (s / 60)) / 60) * (2 * Math.PI),
-    hAngel = Math.PI / 2 - ((h % 12) / 12) * (2 * Math.PI);
+    sAngel = Math.PI / 2 - ((date.getSeconds() + (date.getMilliseconds() / 1000)) / 60) * 2 * Math.PI,
+    mAngel = Math.PI / 2 - (date.getMinutes() + date.getSeconds() / 60 / 60) * 2 * Math.PI,
+    hAngel = Math.PI / 2 - (((date.getHours() % 12) + date.getMinutes() / 60) / 12) * 2 * Math.PI
 
     var 
     sX = Math.cos(sAngel) * R * 0.9 + R,
@@ -74,7 +70,7 @@ function clock(){
     mLine = new Path2D();
         mLine.moveTo(x + R, y + R);
         mLine.lineTo(mX + x + 3, mY + y + 3);
-        context.lineWidth = 1;
+        context.lineWidth = 2;
         context.strokeStyle = "black";
         context.stroke(mLine);
 
@@ -85,15 +81,8 @@ function clock(){
         context.strokeStyle = "black";
         context.stroke(hLine);
     
-    circle3 = new Path2D;
-        circle3.arc(120, 80, 3, 0, 2 * Math.PI);
-        context.fillStyle = "blue";
-        context.fill(circle3);
-
-    circle4 = new Path2D;
-        circle4.arc(120, 80, 2, 0, 2 * Math.PI);
-        context.fillStyle = "black";
-        context.fill(circle4);
+    drawCrl(120, 80, 3, "blue");
+    drawCrl(120, 80, 2, "Black");
 
 }
 
