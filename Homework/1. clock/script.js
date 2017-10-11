@@ -2,6 +2,7 @@ var canvas = document.getElementById("clock");
 var context = canvas.getContext("2d");
 
 function clock(){
+
     circle = new Path2D;
         circle.arc(120, 80, 60, 0, 2 * Math.PI);
         context.fillStyle = "black";
@@ -44,15 +45,15 @@ function clock(){
     context.strokeText("6", 117, 130);
     context.strokeText("9", 70, 83);
 
-    var date = new Date(), h, m, s, ms, sAngel, hAngel, mAngel;
+    var date = new Date(),
 
-    h = date.getHours();
-    m = date.getMinutes();
-    s = date.getSeconds();
-    ms = (date.getMilliseconds() / 1000);
+    h = date.getHours(),
+    m = date.getMinutes(),
+    s = date.getSeconds(),
+    ms = date.getMilliseconds() / 1000,
 
-    sAngel = Math.PI / 2 - ((s + ms) / 60) * (2 * Math.PI);
-    mAngel = Math.PI / 2 - (m / 60) * (2 * Math.PI);
+    sAngel = Math.PI / 2 - ((s + ms) / 60) * (2 * Math.PI),
+    mAngel = Math.PI / 2 - ((m + (s / 60)) / 60) * (2 * Math.PI),
     hAngel = Math.PI / 2 - ((h % 12) / 12) * (2 * Math.PI);
 
     var 
@@ -83,6 +84,16 @@ function clock(){
         context.lineWidth = 5;
         context.strokeStyle = "black";
         context.stroke(hLine);
+    
+    circle3 = new Path2D;
+        circle3.arc(120, 80, 3, 0, 2 * Math.PI);
+        context.fillStyle = "blue";
+        context.fill(circle3);
+
+    circle4 = new Path2D;
+        circle4.arc(120, 80, 2, 0, 2 * Math.PI);
+        context.fillStyle = "black";
+        context.fill(circle4);
 
 }
 
