@@ -9,9 +9,11 @@ function drawCrl(x, y, R, col){
 }
 
 function clock(){
-
-    drawCrl(120, 80, 60, "Black");
-    drawCrl(120, 80, 59, "White");
+    
+        circle = new Path2D;
+        circle.arc(120, 80, 60, 0, 2 * Math.PI);
+        context.lineWidth = 1;
+        context.stroke(circle);
 
     var d, angle, pX, pY, qX, qY, R = 60, x = 60, y = 20;
 
@@ -48,9 +50,10 @@ function clock(){
   
     var date = new Date();
 
-    sAngel = Math.PI / 2 - ((date.getSeconds() + (date.getMilliseconds() / 1000)) / 60) * 2 * Math.PI,
+    sAngel = Math.PI / 2 - (date.getSeconds() / 60) * 2 * Math.PI,
+    // sAngel = Math.PI / 2 - ((date.getSeconds() + (date.getMilliseconds() / 1000)) / 60) * 2 * Math.PI,
     mAngel = Math.PI / 2 - (date.getMinutes() + date.getSeconds() / 60 / 60) * 2 * Math.PI,
-    hAngel = Math.PI / 2 - (((date.getHours() % 12) + date.getMinutes() / 60) / 12) * 2 * Math.PI
+    hAngel = Math.PI / 2 - (((date.getHours() % 12) + date.getMinutes() / 60) / 12) * 2 * Math.PI;
 
     var 
     sX = Math.cos(sAngel) * R * 0.9 + R,
