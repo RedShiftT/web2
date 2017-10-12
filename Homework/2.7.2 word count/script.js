@@ -32,7 +32,7 @@ btn.addEventListener("click", function(){
       
       for(var key in text) {
         if (text[key] == res){
-            alert("Здесь " + keys.length + " слов.\nЧаще всех использовалось слово \"" + key + "\"");
+            alert("Чаще всех использовалось слово \"" + key + "\"");
         }
       };
 });
