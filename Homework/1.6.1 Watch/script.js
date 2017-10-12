@@ -11,11 +11,11 @@ function drawCrl(x, y, R, col){
 function clock(){
     
         circle = new Path2D;
-        circle.arc(120, 80, 60, 0, 2 * Math.PI);
+        circle.arc(60, 60, 60, 0, 2 * Math.PI);
         context.lineWidth = 1;
         context.stroke(circle);
 
-    var d, angle, pX, pY, qX, qY, R = 60, x = 60, y = 20;
+    var d, angle, pX, pY, qX, qY, R = 60, x = 0, y = 0;
 
     for(d = 0; d < 60; ++d){
         angle = (d / 60) * (2 * Math.PI);
@@ -43,10 +43,10 @@ function clock(){
 
     context.fillStyle = "blue";  
     context.font = 'bold 12px Arial';  
-    context.fillText("3", 165, 83); 
-    context.fillText("12", 115, 36);
-    context.fillText("6", 117, 131);
-    context.fillText("9", 70, 83);
+    context.fillText("3", 105, 65); 
+    context.fillText("12", 53, 17);
+    context.fillText("6", 57, 111);
+    context.fillText("9", 10, 65);
   
     var date = new Date();
 
@@ -84,8 +84,8 @@ function clock(){
         context.strokeStyle = "black";
         context.stroke(hLine);
     
-    drawCrl(120, 80, 3, "blue");
-    drawCrl(120, 80, 2, "Black");
+    drawCrl(60, 60, 3, "blue");
+    drawCrl(60, 60, 2, "Black");
 
 }
 
