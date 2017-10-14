@@ -1,0 +1,20 @@
+html, body {
+    margin: 0px;
+    width: 100%;
+}
+
+#textarea {
+    height: 95%;
+    width: 100%;
+    color: blueviolet;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#count {
+    height: 5%;
+    width: 100%;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+}
