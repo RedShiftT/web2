@@ -9,13 +9,11 @@ function drawCrl(x, y, R, col){
 }
 
 function clock(){
-    
+    var d, angle, pX, pY, qX, qY, R = 200;
         circle = new Path2D;
-        circle.arc(60, 60, 60, 0, 2 * Math.PI);
+        circle.arc(R, R, R, 0, 2 * Math.PI);
         context.lineWidth = 1;
         context.stroke(circle);
-
-    var d, angle, pX, pY, qX, qY, R = 60, x = 0, y = 0;
 
     for(d = 0; d < 60; ++d){
         angle = (d / 60) * (2 * Math.PI);
@@ -27,8 +25,8 @@ function clock(){
         qX += R; qY += R;
 
         line = new Path2D;
-            line.moveTo(pX + x, pY + y);
-            line.lineTo(qX + x, qY+ y);
+            line.moveTo(pX, pY);
+            line.lineTo(qX, qY);
 
         if ((d % 5) == 0){
             context.lineWidth = 2;
@@ -42,17 +40,18 @@ function clock(){
     }
 
     context.fillStyle = "blue";  
-    context.font = 'bold 12px Arial';  
-    context.fillText("3", 105, 65); 
-    context.fillText("12", 53, 17);
-    context.fillText("6", 57, 111);
-    context.fillText("9", 10, 65);
+    context.textBaseline = "bottom";
+    context.textAlign = "center";
+    context.font = 'bold 35px Arial';  
+    context.fillText("3", R + R - 40, R + 20); 
+    context.fillText("12", R, R - R + 60);
+    context.fillText("6", R, R + R - 20);
+    context.fillText("9", R - R + 40, R + 20);
   
     var date = new Date();
-
-    sAngel = Math.PI / 2 - (date.getSeconds() / 60) * 2 * Math.PI,
-    // sAngel = Math.PI / 2 - ((date.getSeconds() + (date.getMilliseconds() / 1000)) / 60) * 2 * Math.PI,
-    mAngel = Math.PI / 2 - (date.getMinutes() + date.getSeconds() / 60 / 60) * 2 * Math.PI,
+    
+    sAngel = Math.PI / 2 - ((date.getSeconds() + (date.getMilliseconds() / 1000)) / 60) * 2 * Math.PI,
+    mAngel = Math.PI / 2 - ((date.getMinutes() + date.getSeconds() / 60) / 60) * 2 * Math.PI,
     hAngel = Math.PI / 2 - (((date.getHours() % 12) + date.getMinutes() / 60) / 12) * 2 * Math.PI;
 
     var 
@@ -64,28 +63,28 @@ function clock(){
     hY = -Math.sin(hAngel) * R * 0.6 * 0.9 + R;
 
     sLine = new Path2D();
-        sLine.moveTo(x + R, y + R);
-        sLine.lineTo(sX + x - 5, sY + y - 5);
+        sLine.moveTo(R, R);
+        sLine.lineTo(sX, sY);
         context.lineWidth = 1;
         context.strokeStyle = "red";
         context.stroke(sLine);
 
     mLine = new Path2D();
-        mLine.moveTo(x + R, y + R);
-        mLine.lineTo(mX + x + 3, mY + y + 3);
+        mLine.moveTo(R, R);
+        mLine.lineTo(mX, mY);
         context.lineWidth = 2;
         context.strokeStyle = "black";
         context.stroke(mLine);
 
     hLine = new Path2D();
-        hLine.moveTo(x + R, y + R);
-        hLine.lineTo(hX + x, hY + y);
+        hLine.moveTo(R, R);
+        hLine.lineTo(hX, hY);
         context.lineWidth = 5;
         context.strokeStyle = "black";
         context.stroke(hLine);
     
-    drawCrl(60, 60, 3, "blue");
-    drawCrl(60, 60, 2, "Black");
+    drawCrl(R, R, 5, "blue");
+    drawCrl(R, R, 3, "Black");
 
 }
 
