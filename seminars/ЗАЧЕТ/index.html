@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input v-model="visible1" type="checkbox">
+        <h1 v-show="visible1">v-show</h1>
+        <input v-model="visible2" type="checkbox">
+        <h1 v-if="visible2">v-if</h1>
+    </div>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
